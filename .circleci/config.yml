@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: echo "Build One - Hello"
       - run: sleep 10
-  buildtwo:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
