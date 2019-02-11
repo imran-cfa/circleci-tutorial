@@ -8,6 +8,10 @@ jobs:
       - run: echo "Build One - Hello"
       - run: mkdir -p buildone_workspace
       - run: echo "Trying out workspaces" > buildone_workspace/buildone_output
+      - persist_to_workspace:
+        root: buildone_workspace
+        paths:
+          - buildone_output
   buildtwo:
     docker:
       - image: circleci/ruby:2.4.1
