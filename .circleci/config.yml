@@ -6,17 +6,29 @@ jobs:
     steps:
       - checkout
       - run: echo "Build One - Hello"
-      - run: sleep 10
+      - run: mkdir -p buildone_workspace
+      - run: echo "Trying out workspaces" > buildone_workspace/buildone_output
   buildtwo:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "Build Two - Hello"
-      - run: sleep 15
+      - attach_workspace:
+        at: buildone_workspace
+      
+      - run: |
+        if [[ $(cat buildone_workspace/buildone_output) == "Trying out workspaces" ]]; then
+          echo "It worked!";
+        else
+          echo "Nope!" ; exit 1
+        fi
+   
 workflows:
   version: 2
   one_and_two:
     jobs:
       - buildone
       - buildtwo
+        requires:
+          - one
