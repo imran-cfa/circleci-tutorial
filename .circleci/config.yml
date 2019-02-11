@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run: echo "Build Two - Hello"
       - attach_workspace:
-        at: buildone_workspace
+          at: buildone_workspace
       
       - run: |
           if [[ $(cat buildone_workspace/buildone_output) == "Trying out workspaces" ]] ; then
