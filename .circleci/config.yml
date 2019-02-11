@@ -34,5 +34,5 @@ workflows:
     jobs:
       - buildone
       - buildtwo: 
-        requires:
-          - buildone
+          requires:
+            - buildone
