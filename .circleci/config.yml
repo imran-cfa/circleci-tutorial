@@ -33,6 +33,6 @@ workflows:
   one_and_two:
     jobs:
       - buildone
-      - buildtwo
-        requires:
-          - one
+      - buildtwo: 
+         requires:
+           - one
