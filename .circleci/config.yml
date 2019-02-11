@@ -35,4 +35,4 @@ workflows:
       - buildone
       - buildtwo: 
          requires:
-           - one
+           - buildone
